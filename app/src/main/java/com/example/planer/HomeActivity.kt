@@ -22,7 +22,7 @@ class HomeActivity : AppCompatActivity() {
             Intent(this, LoginActivity::class.java).also {
                 it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(it)
-                Toast.makeText(this, "Logout berhasil!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Logout successful!", Toast.LENGTH_SHORT).show()
             }
         }
 
