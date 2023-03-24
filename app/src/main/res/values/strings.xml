@@ -11,4 +11,7 @@
     <string name="home_page">Home page</string>
     <string name="logout">Logout</string>
     <string name="create_an_account">Create an account</string>
+    <string name="restart_your_password">Restart your password</string>
+    <string name="restart_password">Restart password</string>
+    <string name="i_remember_password">I remember password</string>
 </resources>

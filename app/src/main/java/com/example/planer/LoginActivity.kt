@@ -45,7 +45,7 @@ class LoginActivity : AppCompatActivity() {
 
         textViewForget.setOnClickListener() {
             //open home/dashboard
-            val intent = Intent(this,HomeActivity::class.java)
+            val intent = Intent(this,ResetPasswordActivity::class.java)
             startActivity(intent)
         }
 
