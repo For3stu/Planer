@@ -26,29 +26,42 @@ class ResetPasswordActivity : AppCompatActivity() {
         binding = ActivityResetPasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         etPassword = findViewById(R.id.etEmailForget)
         btnResetPassword = findViewById(R.id.btnRestartUser)
 
         //Auth
         auth = FirebaseAuth.getInstance()
 
-        btnResetPassword.setOnClickListener{
+        //Reset password
+        btnResetPassword.setOnClickListener {
+            val email = etEmailForget.text.toString().trim()
             val sPassword = etPassword.text.toString()
-            auth.sendPasswordResetEmail(sPassword)
-                .addOnSuccessListener {
-                    Toast.makeText(this,"Please check your Email", Toast.LENGTH_SHORT).show()
-                }
-                .addOnFailureListener{
-                    Toast.makeText(this,it.toString(), Toast.LENGTH_SHORT).show()
-                }
+            if (email.isEmpty()) // return true if email is empty
+            {
+                etEmailForget.error = "Enter Email"
+                etEmailForget.requestFocus()
+            } else {
+                auth.sendPasswordResetEmail(sPassword)
+                    .addOnSuccessListener {
+                        Toast.makeText(this, "Please check your Email", Toast.LENGTH_SHORT).show()
+                    }
+
+                    .addOnFailureListener {
+                        Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
+                    }
+
+                    val intent = Intent(this, LoginActivity::class.java)
+                     startActivity(intent)
+            }
         }
 
+        //I Remember password
         textViewBackToLogin.setOnClickListener() {
             //RegisterActivity
-            val intent = Intent(this,LoginActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
-
-
     }
 }
